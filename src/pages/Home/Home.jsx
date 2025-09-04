@@ -2,8 +2,8 @@
 import React, { useEffect, useState, useCallback, lazy, Suspense } from 'react';
 import Header from '../../components/Header/Header';
 import Greeting from '../../components/Greeting/Greeting';
-// Lazy-load below-the-fold sections to improve initial render/LCP
-const UsersBlock = lazy(() => import('../../components/UsersBlock/UsersBlock'));
+import UsersBlock from '../../components/UsersBlock/UsersBlock';
+// Keep the form lazy (below-the-fold), load UsersBlock eagerly to avoid placeholder shifts
 const Form = lazy(() => import('../../components/Form/Form'));
 import { getUsers } from '../../api/userApi';
 import backgroundImage from '../../assets/pexels-alexandr-podvalny-1227513.jpeg';
@@ -76,15 +76,13 @@ export default function Home() {
       />
 
       <main className="home">
-        <Suspense fallback={<div style={{textAlign:'center', padding: 20}}>Loading users…</div>}>
-          <UsersBlock
-            users={users}
-            isLoading={loading}
-            error={err}
-            onShowMore={showMore}
-            hasMore={hasMore}
-          />
-        </Suspense>
+        <UsersBlock
+          users={users}
+          isLoading={loading}
+          error={err}
+          onShowMore={showMore}
+          hasMore={hasMore}
+        />
 
         <Suspense fallback={<div style={{textAlign:'center', padding: 20}}>Loading form…</div>}>
           <Form onSuccess={handleRegistered} />

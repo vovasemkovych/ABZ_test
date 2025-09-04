@@ -11,7 +11,8 @@ export default function Greeting({ image, title, subtitle }) {
         <img
           src={image}
           alt="Background"
-          decoding="async"
+          loading="eager"
+          decoding="sync"
           fetchpriority="high"
           className="hero__bg"
         />
