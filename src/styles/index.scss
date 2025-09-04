@@ -1,0 +1,13 @@
+@use 'mixins' as *;
+@forward 'mixins';
+*{
+    margin: 0;
+    font-family: $font-family-primary;
+    font-weight: 400;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 26px;
+}
+html{
+    background-color: $color-background;
+}

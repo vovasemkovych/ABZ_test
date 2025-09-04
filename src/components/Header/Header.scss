@@ -1,0 +1,42 @@
+@use '../../styles/index' as *;
+
+.header {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  &__inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    //&-img { }
+    //&__brand {}
+
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+}
+.btn--pill{
+    margin-left: 12px;
+}
+@media (max-width: 360px) {
+  .header__nav{
+    display: flex;
+    flex-direction: column;
+    & button{
+        margin: 5px;
+    }
+  }
+  
+}

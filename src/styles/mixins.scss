@@ -1,0 +1,52 @@
+// Font variables
+$font-family-primary: 'Nunito', sans-serif;
+$font-weight-regular: 400;
+
+// Color variables
+$color-primary: rgb(244, 224, 65);
+$color-primary-hex: #F4E041;
+$color-secondary: rgb(0, 189, 211);
+$color-secondary-hex: #00BDD3;
+$color-background: rgb(248, 248, 248);
+$color-background-hex: #F8F8F8;
+$color-text: #222;
+
+// Button and card variables
+$btn-radius: 999px;
+$btn-padding: 0;
+$card-bg: #ffffff;
+$card-radius: 8px;
+$gap: 20px;
+
+// Responsiveness
+$max-width: 1170px;
+// Button mixin
+@mixin button($bg: $color-primary, $color: #222, $radius: $btn-radius) {
+  display: inline-block;
+  padding: $btn-padding;
+  border-radius: $radius;
+  background-color: $bg;
+  color: $color;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+  transition: transform .12s ease, background-color .12s ease;
+  &:hover { transform: translateY(-1px); }
+  &:active { transform: translateY(0); }
+  &:disabled { opacity: .6; cursor: not-allowed; transform: none; background-color: grey; margin: 0 auto; }
+}
+
+// Card inner layout 
+@mixin card($pad: 20px, $radius: $card-radius) {
+  background: $card-bg;
+  border-radius: $radius;
+  padding: $pad;
+  box-shadow: 0 6px 18px rgba(15,15,15,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}

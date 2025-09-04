@@ -1,0 +1,20 @@
+
+@use '../../styles/index' as *;
+
+.btn {
+  @include button(); 
+  font-size: 16px;
+  font-weight: 500;
+  //padding: 10px 18px;
+  min-height: 34px;
+  min-width: 100px;
+  //border: 0;
+  &--ghost {
+    @include button(#fff, #222);
+    //box-shadow: none;
+    //border: 1px solid rgba(0,0,0,0.06);
+  }
+  &--pill {
+    border-radius: $btn-radius;
+  }
+}

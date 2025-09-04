@@ -1,0 +1,43 @@
+@use '../../styles/index' as *;
+
+.hero {
+  margin: 0 auto;
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position:center 100%;
+  background-repeat: no-repeat;
+  color: white;
+  max-height: 650px;
+  max-width: 1170px;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 0;
+  }
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 460px;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  &__title {
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 400;
+    margin-bottom: 12px;
+
+  }
+  &__subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    line-height: 26px;
+    margin-bottom: 16px;
+  }
+}

@@ -1,0 +1,123 @@
+@use '../../styles/index' as *;
+
+.signup-wrap {
+  max-width: 480px;
+  margin: 80px auto;
+  padding: 0 20px;
+
+  &__title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 28px;
+    color: #222
+  }
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 4px;
+      font-size: 14px;
+      outline: none;
+      &:focus { border-color: rgba(0,0,0,0.4); }
+    }
+
+    &--error input { border-color: #d33; }
+  }
+
+  .radio-group {
+    border: 0;
+    padding: 0;
+    margin: 8px 0 0;
+    legend { margin-bottom: 10px; color: #222; }
+    .radio {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0;
+      input { 
+        -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      margin: 0;
+      position: relative;
+      cursor: pointer;
+
+      &:checked {
+        border-color: $color-secondary;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 8px;
+          height: 8px;
+          background-color: $color-secondary;
+          border-radius: 50%;
+        }
+    }
+      }
+    }
+  }
+
+  .file {
+    display: flex;
+    align-items: center;
+    //gap: 12px;
+
+    .upload {
+      position: relative;
+      &__btn {
+        @include button(#fff, $color-text);
+        border: 1px solid rgba(0,0,0,0.2);
+        padding: 10px 16px;
+        border-radius: 4px 0 0 4px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+      }
+    }
+    .upload__filename {
+      flex: 1;
+      font-size: 14px;
+      padding: 10px 12px;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-left: 0;
+      border-radius: 0 4px 4px 0;
+      color: #222;
+      background: #fff;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+    }
+    &--error .upload__filename,
+    &--error .upload__btn {
+      border-color: #d33;
+      color: #d33;
+    }
+  }
+
+  .hint { font-size: 12px; color: #d33; }
+  .form-error { margin-top: 6px; color: #d33; text-align: left; }
+}
+@media (max-width: 360px) {
+  .signup .file .upload__filename{
+    font-size: 10px; 
+  }
+}
