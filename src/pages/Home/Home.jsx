@@ -1,9 +1,10 @@
 // Home page: orchestrates header, hero, users list and sign-up form
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, lazy, Suspense } from 'react';
 import Header from '../../components/Header/Header';
 import Greeting from '../../components/Greeting/Greeting';
-import UsersBlock from '../../components/UsersBlock/UsersBlock';
-import Form from '../../components/Form/Form';
+// Lazy-load below-the-fold sections to improve initial render/LCP
+const UsersBlock = lazy(() => import('../../components/UsersBlock/UsersBlock'));
+const Form = lazy(() => import('../../components/Form/Form'));
 import { getUsers } from '../../api/userApi';
 import backgroundImage from '../../assets/pexels-alexandr-podvalny-1227513.jpeg';
 import './Home.scss';
@@ -75,15 +76,19 @@ export default function Home() {
       />
 
       <main className="home">
-        <UsersBlock
-          users={users}
-          isLoading={loading}
-          error={err}
-          onShowMore={showMore}
-          hasMore={hasMore}
-        />
+        <Suspense fallback={<div style={{textAlign:'center', padding: 20}}>Loading users…</div>}>
+          <UsersBlock
+            users={users}
+            isLoading={loading}
+            error={err}
+            onShowMore={showMore}
+            hasMore={hasMore}
+          />
+        </Suspense>
 
-        <Form onSuccess={handleRegistered} />
+        <Suspense fallback={<div style={{textAlign:'center', padding: 20}}>Loading form…</div>}>
+          <Form onSuccess={handleRegistered} />
+        </Suspense>
       </main>
     </>
   );

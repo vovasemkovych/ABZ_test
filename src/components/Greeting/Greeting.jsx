@@ -4,9 +4,18 @@ import './Greeting.scss';
 import Button from '../Button/Button';
 
 export default function Greeting({ image, title, subtitle }) {
-  const style = image ? { backgroundImage: `url(${image})` } : {};
   return (
-    <section className="hero" style={style} aria-label="Intro">
+    <section className="hero" aria-label="Intro">
+      {/* Render the hero image as an <img> to allow priority loading and decoding hints */}
+      {image && (
+        <img
+          src={image}
+          alt="Background"
+          decoding="async"
+          fetchpriority="high"
+          className="hero__bg"
+        />
+      )}
       <div className="hero__overlay" />
       <div className="hero__content">
         <h1 className="hero__title">{title}</h1>

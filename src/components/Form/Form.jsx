@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { getPositions, createUser } from '../../api/userApi';
 import Button from '../Button/Button';
 import './Form.scss';
+import Popup from '../Popup/Popup';
+import successImg from '../../assets/success-image.svg';
 
 const initial = {
   name: '',
@@ -19,6 +21,7 @@ export default function SignUpForm({ onSuccess }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [touched, setTouched] = useState({});
+  const [showSuccess, setShowSuccess] = useState(false);
 
   // Load positions for radios
   useEffect(() => {
@@ -83,6 +86,7 @@ export default function SignUpForm({ onSuccess }) {
       if (res?.success) {
         setForm(initial);
         setTouched({});
+        setShowSuccess(true);
         onSuccess?.();
       } else {
         setError(res?.message || 'Registration failed');
@@ -103,6 +107,12 @@ export default function SignUpForm({ onSuccess }) {
   return (
     <section className="signup-wrap" id="signup">
       <h2 className="signup-wrap__title">Working with POST request</h2>
+
+      <Popup open={showSuccess} onClose={() => setShowSuccess(false)}>
+        <img src={successImg} alt="Success" width="64" height="64" />
+        <h3 style={{margin: '8px 0 4px', color: '#222'}}>Registration successful!</h3>
+        <p style={{marginBottom:'8px', color:'#555'}}>Your account has been created.</p>
+      </Popup>
 
       <form className="signup" onSubmit={submit} noValidate>
         <div className={`field ${showErr('name') ? 'field--error' : ''}`}>

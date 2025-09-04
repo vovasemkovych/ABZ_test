@@ -21,6 +21,8 @@ const UserCard = ({ user }) => {
           src={imageSource}
           alt={user.name || 'User avatar'} 
           onError={handleImageError}
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <h3 className="user-card__name" title={user.name}>{user.name}</h3>
