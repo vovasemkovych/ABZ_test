@@ -32,6 +32,7 @@ Project Structure (key parts)
   - UserCard/ — Individual user card with avatar fallback
   - Button/ — Reusable button with base and modifier styles
   - Form/ — Sign-up form with validation and POST to API
+  - Popup/ — Reusable popup modal for transient success/info messages
 - src/api/
   - client.js — axios instance and response interceptor
   - userApi.js — API helpers: getUsers, getPositions, getToken, createUser
